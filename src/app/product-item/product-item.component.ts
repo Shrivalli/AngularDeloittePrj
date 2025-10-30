@@ -12,11 +12,12 @@ import { Product } from '../../Models/product';
 export class ProductItemComponent {
   @Input() product!: Product;
   @Output() deleteProduct = new EventEmitter<number>();
+  showDetails: boolean = false;
 
   constructor(private router: Router) {}
 
-  viewDetails(): void {
-    this.router.navigate(['/product', this.product.id]);
+  toggleDetails(): void {
+    this.showDetails = !this.showDetails;
   }
 
   onDelete(): void {

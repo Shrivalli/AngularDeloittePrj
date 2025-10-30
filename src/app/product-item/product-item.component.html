@@ -8,6 +8,24 @@
   </span>
 </td>
 <td>
-  <button class="view-btn" (click)="viewDetails()">View Details</button>
+  <button class="view-btn" (click)="toggleDetails()">{{ showDetails ? 'Hide Details' : 'View Details' }}</button>
   <button class="delete-btn" (click)="onDelete()">Delete</button>
 </td>
+<tr *ngIf="showDetails" class="details-row">
+  <td colspan="6" class="details-content">
+    <div class="product-details">
+      <h4>Product Details</h4>
+      <div class="detail-grid">
+        <div><strong>ID:</strong> {{ product.id }}</div>
+        <div><strong>Name:</strong> {{ product.name }}</div>
+        <div><strong>Price:</strong> ${{ product.price }}</div>
+        <div><strong>Category:</strong> {{ product.category }}</div>
+        <div><strong>In Stock:</strong> 
+          <span [class]="product.inStock ? 'in-stock' : 'out-of-stock'">
+            {{ product.inStock ? 'Yes' : 'No' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </td>
+</tr>
