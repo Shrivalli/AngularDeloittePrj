@@ -1,0 +1,38 @@
+<div class="detail-container" *ngIf="product">
+  <h2>Product Details</h2>
+  
+  <div class="product-card">
+    <div class="detail-row">
+      <label>ID:</label>
+      <span>{{ product.id }}</span>
+    </div>
+    <div class="detail-row">
+      <label>Name:</label>
+      <span>{{ product.name }}</span>
+    </div>
+    <div class="detail-row">
+      <label>Price:</label>
+      <span>${{ product.price }}</span>
+    </div>
+    <div class="detail-row">
+      <label>Category:</label>
+      <span>{{ product.category }}</span>
+    </div>
+    <div class="detail-row">
+      <label>In Stock:</label>
+      <span [class]="product.inStock ? 'in-stock' : 'out-of-stock'">
+        {{ product.inStock ? 'Yes' : 'No' }}
+      </span>
+    </div>
+  </div>
+  
+  <div class="actions">
+    <button class="back-btn" (click)="goBack()">Back to List</button>
+    <button class="delete-btn" (click)="deleteProduct()">Delete Product</button>
+  </div>
+</div>
+
+<div class="error-container" *ngIf="!product">
+  <h2>Product Not Found</h2>
+  <button class="back-btn" (click)="goBack()">Back to List</button>
+</div>

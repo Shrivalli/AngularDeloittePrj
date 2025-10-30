@@ -1,0 +1,28 @@
+<h1> First component</h1>
+<p>first works!</p>
+
+<p>title: {{title}}</p>
+<h1> Age: {{age}}</h1>
+
+<h2> Enter your Name: <input type="text" [(ngModel)]="ename"></h2>
+
+<h2> Your Name is :{{ename}}</h2>
+
+<img [src]="picsrc" alt="Devops image" height="100" width="100"/>
+<img src="{{picsrc}}" alt="Devops image" height="100" width="100"/>
+
+<input type="button" value="Click Me" (click)="login()"/>
+
+<div>
+    <form>
+    
+        Enter the first number: <input type="number" [(ngModel)]="firstnum" name="firstnum"/><br/><br/>
+        Enter the second number: <input type="number" [(ngModel)]="secondnum" name="secondnum"/><br/><br/>  
+          <!-- Enter the first number: <input type="number"  #firstnum/><br/><br/> <!--template reference variable -->
+       <!-- Enter the second number: <input type="number"  #secondnum/><br/><br/> -->
+        <input type="button" value="Sum" (click)="add()"/>
+        <!-- <input type="button" value="Add" (click)="addnumbers(+firstnum.value,+secondnum.value)"/> -->
+    </form>
+
+    <h2> Result is {{result}}</h2>
+</div>

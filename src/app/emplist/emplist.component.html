@@ -1,0 +1,25 @@
+
+
+<h2> Employee Details </h2>
+<!-- <p> Employee ID: {{e.empid}} </p>
+<p> Employee Name: {{e.empname}} </p>
+<p> Employee Salary: {{e.salary}} </p>
+<p> Employee DOJ: {{e.doj| date:'shortDate'}} </p> -->
+<!-- {{emps | json  }}
+{{e|json}} -->
+
+ <table class="table table-bordered">
+    <tr>
+        <th>Emp ID</th>
+        <th>Emp Name</th>
+        <th>Salary</th>
+        <th>DOJ</th>
+        <th> Actions </th>
+    </tr>
+    <tr *ngFor="let emp of emps">
+        <td>{{emp.empid}}</td>
+        <td>{{emp.empname}}</td>
+        <td>{{emp.salary}}</td>
+        <td>{{emp.doj | date:'shortDate'}}</td>
+        <td> <button [routerLink]="['/empedit', emp.empid]">Edit</button></td>
+</table> 

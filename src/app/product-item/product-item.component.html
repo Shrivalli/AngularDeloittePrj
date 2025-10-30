@@ -1,0 +1,12 @@
+<td>{{ product.id }}</td>
+<td>{{ product.name }}</td>
+<td>${{ product.price }}</td>
+<td>{{ product.category }}</td>
+<td>
+  <span [class]="product.inStock ? 'in-stock' : 'out-of-stock'">
+    {{ product.inStock ? 'Yes' : 'No' }}
+  </span>
+</td>
+<td>
+  <button class="view-btn" (click)="viewDetails()">View Details</button>
+</td>

@@ -1,0 +1,25 @@
+<p>account works!</p>
+<h2>Account Manager</h2>
+
+<div>
+  <input placeholder="Owner name" [(ngModel)]="newOwner" />
+  <input type="number" placeholder="Starting balance" [(ngModel)]="newBalance" />
+  <button (click)="addAccount()" [disabled]="!newOwner.trim()">Add</button>
+</div>
+
+<ul>
+  <li *ngFor="let acc of accounts; let i = index">
+    <span (click)="selectAccount(acc)" [title]="'ID: ' + acc.id" [style.color]="acc.balance < 1000 ? 'crimson' : 'black'">
+      {{ acc.owner }}
+    </span>
+    $<input type="number" [(ngModel)]="acc.balance" (change)="onBalanceChange(acc)" />
+    <button (click)="removeAccount(i)">Remove</button>
+  </li>
+</ul>
+
+<p>Total: ${{ totalFunds }}</p>
+
+<div *ngIf="selected">
+  <h3>Selected</h3>
+  <p>Owner: {{ selected.owner }} <br /> Balance: ${{ selected.balance }}</p>
+</div>

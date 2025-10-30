@@ -1,0 +1,18 @@
+<nav class="navbar">
+  <div class="nav-container">
+    <div class="left-section">
+      <h3><a routerLink="/" class="portal-title">Deloitte Portal</a></h3>
+      <div class="nav-links" *ngIf="loginService.isUserLoggedIn()">
+        <a routerLink="/employees">Employee List</a>
+        <a routerLink="/products">Products</a>
+        <a routerLink="/empadd">Add Employee</a>
+        <a routerLink="/first">First</a>
+        <a routerLink="/account">Account</a>
+      </div>
+    </div>
+    <div class="user-info" *ngIf="loginService.isUserLoggedIn()">
+      <span class="welcome-text">Hello {{loginService.getCurrentUser()?.username }}</span>
+      <button (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

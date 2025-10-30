@@ -1,0 +1,33 @@
+<div class="product-container">
+  <h2>Product List</h2>
+  
+  <div class="filter-section">
+    <label for="categoryFilter">Search by Category:</label>
+    <input type="text" id="categoryFilter" [(ngModel)]="selectedCategory" placeholder="Enter category name">
+    
+    <label for="stockFilter">Filter by Stock:</label>
+    <select id="stockFilter" [(ngModel)]="selectedStock">
+      <option *ngFor="let stock of stockOptions" [value]="stock">{{ stock }}</option>
+    </select>
+  </div>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Category</th>
+        <th>In Stock</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products | categoryFilter:selectedCategory | stockFilter:selectedStock">
+        <app-product-item 
+          [product]="product">
+        </app-product-item>
+      </tr>
+    </tbody>
+  </table>
+</div>

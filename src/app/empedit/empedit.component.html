@@ -1,0 +1,26 @@
+<h2>Edit Employee</h2>
+
+<form (ngSubmit)="saveEmployee()">
+  <div class="form-group">
+    <label>Employee ID:</label>
+    <input type="number" [(ngModel)]="emp.empid" name="empid" class="form-control" readonly>
+  </div>
+  
+  <div class="form-group">
+    <label>Employee Name:</label>
+    <input type="text" [(ngModel)]="emp.empname" name="empname" class="form-control" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Salary:</label>
+    <input type="number" [(ngModel)]="emp.salary" name="salary" class="form-control" required>
+  </div>
+  
+  <div class="form-group">
+    <label>Date of Joining:</label>
+    <input type="date" [(ngModel)]="dojString" name="doj" class="form-control">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Save</button>
+  <button type="button" (click)="cancel()" class="btn btn-secondary">Cancel</button>
+</form>
