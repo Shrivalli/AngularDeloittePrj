@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { Product } from '../../Models/product';
@@ -11,10 +11,15 @@ import { Product } from '../../Models/product';
 })
 export class ProductItemComponent {
   @Input() product!: Product;
+  @Output() deleteProduct = new EventEmitter<number>();
 
   constructor(private router: Router) {}
 
   viewDetails(): void {
     this.router.navigate(['/product', this.product.id]);
+  }
+
+  onDelete(): void {
+    this.deleteProduct.emit(this.product.id);
   }
 }

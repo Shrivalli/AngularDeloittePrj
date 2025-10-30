@@ -25,7 +25,8 @@
     <tbody>
       <tr *ngFor="let product of products | categoryFilter:selectedCategory | stockFilter:selectedStock">
         <app-product-item 
-          [product]="product">
+          [product]="product"
+          (deleteProduct)="onProductDelete($event)">
         </app-product-item>
       </tr>
     </tbody>

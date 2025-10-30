@@ -47,3 +47,19 @@ td:last-child {
   background-color: #0056b3;
   transform: translateY(-1px);
 }
+
+.delete-btn {
+  padding: 6px 12px;
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
