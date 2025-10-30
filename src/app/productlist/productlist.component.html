@@ -3,12 +3,14 @@
   
   <div class="filter-section">
     <label for="categoryFilter">Search by Category:</label>
-    <input type="text" id="categoryFilter" [(ngModel)]="selectedCategory" placeholder="Enter category name">
+    <input type="text" id="categoryFilter" [(ngModel)]="selectedCategory" placeholder="Enter category name" appHighlight="lightyellow">
     
     <label for="stockFilter">Filter by Stock:</label>
     <select id="stockFilter" [(ngModel)]="selectedStock">
       <option *ngFor="let stock of stockOptions" [value]="stock">{{ stock }}</option>
     </select>
+    
+    <button (click)="triggerChangeDetection()">Trigger Change Detection</button>
   </div>
   
   <table>
@@ -23,7 +25,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let product of products | categoryFilter:selectedCategory | stockFilter:selectedStock">
+      <tr *ngFor="let product of products | categoryFilter:selectedCategory | stockFilter:selectedStock" appHighlight="lightblue">
         <app-product-item 
           [product]="product"
           (deleteProduct)="onProductDelete($event)">

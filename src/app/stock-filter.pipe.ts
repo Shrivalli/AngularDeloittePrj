@@ -7,6 +7,7 @@ import { Product } from '../Models/product';
 export class StockFilterPipe implements PipeTransform {
 
   transform(products: Product[], stockFilter: string): Product[] {
+    console.log('StockFilter (PURE) transform called with:', stockFilter);
     if (!products || !stockFilter || stockFilter === 'All') {
       return products;
     }

@@ -6,10 +6,12 @@ import { ProductService } from '../product.service';
 import { CategoryFilterPipe } from '../category-filter.pipe';
 import { StockFilterPipe } from '../stock-filter.pipe';
 import { ProductItemComponent } from '../product-item/product-item.component';
+import { HighlightDirective } from '../highlight.directive';
 
 @Component({
   selector: 'app-productlist',
-  imports: [CommonModule, FormsModule, CategoryFilterPipe, StockFilterPipe, ProductItemComponent],
+  imports: [CommonModule, FormsModule, CategoryFilterPipe, 
+    StockFilterPipe, ProductItemComponent, HighlightDirective],
   templateUrl: './productlist.component.html',
   styleUrl: './productlist.component.css'
 })
@@ -33,5 +35,10 @@ export class ProductlistComponent implements OnInit {
 
   onProductDelete(productId: number): void {
     this.deleteProduct(productId);
+  }
+
+  triggerChangeDetection(): void {
+    console.log('Change detection triggered manually');
+    // This will trigger change detection cycle
   }
 }
