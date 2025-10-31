@@ -12,6 +12,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 
 import { authGuard } from './auth.guard';
 import { roleGuard } from './role.guard';
+import { componentLoggerGuard } from './component-logger.guard';
 
 export const routes: Routes = [
     { path: '', component: HomepageComponent },
@@ -27,6 +28,6 @@ export const routes: Routes = [
       loadChildren: () => import('./features/product/product.module').then(m => m.ProductModule),
       canMatch: [roleGuard(['admin', 'user'])]
     },
-    { path: 'account', component: AccountComponent, canMatch: [roleGuard(['admin', 'user'])] },
-    { path: 'first', component: FirstComponent, canMatch: [roleGuard(['admin', 'user'])] }
+    { path: 'account', component: AccountComponent, canMatch: [roleGuard(['admin', 'user'])], canActivate: [componentLoggerGuard] },
+    { path: 'first', component: FirstComponent, canMatch: [roleGuard(['admin', 'user'])], canActivate: [componentLoggerGuard] }
 ];

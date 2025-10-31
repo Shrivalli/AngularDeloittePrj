@@ -3,17 +3,17 @@
     <div class="left-section">
       <h3><a routerLink="/" class="portal-title">Deloitte Portal</a></h3>
       <div class="nav-links" *ngIf="loginService.isUserLoggedIn()">
-        <a routerLink="/employees">Employee List</a>
-        <a routerLink="/products">Products</a>
-        <a routerLink="/products/add">Add Product</a>
-        <a routerLink="/employees/add">Add Employee</a>
-        <a routerLink="/first">First</a>
-        <a routerLink="/account">Account</a>
+        <a routerLink="/employees" appTooltip="View and manage employees" tooltipPosition="bottom">Employee List</a>
+        <a routerLink="/products" appTooltip="Browse product catalog" tooltipPosition="bottom">Products</a>
+        <a routerLink="/products/add" appTooltip="Add new product to inventory" tooltipPosition="bottom">Add Product</a>
+        <a routerLink="/employees/add" appTooltip="Register new employee" tooltipPosition="bottom">Add Employee</a>
+        <a routerLink="/first" appTooltip="First component demo" tooltipPosition="bottom">First</a>
+        <a routerLink="/account" appTooltip="Manage your account settings" tooltipPosition="bottom">Account</a>
       </div>
     </div>
     <div class="user-info" *ngIf="loginService.isUserLoggedIn()">
       <span class="welcome-text">Hello {{loginService.getCurrentUser()?.username }}</span>
-      <button (click)="logout()">Logout</button>
+      <button (click)="logout()" appTooltip="Sign out of your account" tooltipPosition="bottom">Logout</button>
     </div>
   </div>
 </nav>
