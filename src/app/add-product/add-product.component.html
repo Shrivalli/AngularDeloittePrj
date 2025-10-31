@@ -9,6 +9,8 @@
       <div *ngIf="name?.invalid && name?.touched" class="error-message">
         <span *ngIf="name?.errors?.['required']">Product name is required</span>
         <span *ngIf="name?.errors?.['minlength']">Name must be at least 2 characters</span>
+        <span *ngIf="name?.errors?.['noNumbers']">Product name cannot contain numbers</span>
+        <span *ngIf="name?.errors?.['forbiddenName']">Product name contains forbidden words (test, demo, sample)</span>
       </div>
     </div>
 
@@ -18,7 +20,7 @@
              [class.error]="price?.invalid && price?.touched">
       <div *ngIf="price?.invalid && price?.touched" class="error-message">
         <span *ngIf="price?.errors?.['required']">Price is required</span>
-        <span *ngIf="price?.errors?.['min']">Price must be greater than 0</span>
+        <span *ngIf="price?.errors?.['minimumPrice']">Price must be at least $1.00</span>
       </div>
     </div>
 

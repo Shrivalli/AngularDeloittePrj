@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { ProductService } from '../product.service';
 import { Product } from '../../Models/product';
+import { CustomValidators } from '../validators/custom-validators';
 
 @Component({
   selector: 'app-add-product',
@@ -21,8 +22,16 @@ export class AddProductComponent {
     public router: Router
   ) {
     this.productForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      price: ['', [Validators.required, Validators.min(0.01)]],
+      name: ['', [
+        Validators.required, 
+        Validators.minLength(2),
+        CustomValidators.noNumbers,
+        CustomValidators.forbiddenName(['test', 'demo', 'sample'])
+      ]],
+      price: ['', [
+        Validators.required, 
+        CustomValidators.minimumPrice(1)
+      ]],
       category: ['', Validators.required],
       inStock: [true]
     });
