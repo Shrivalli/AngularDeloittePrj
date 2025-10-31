@@ -8,7 +8,7 @@ import { Product } from '../Models/product';
 export class CategoryFilterPipe implements PipeTransform {
 
   transform(products: Product[], category: string): Product[] {
-    console.log('CategoryFilter (IMPURE) transform called with:', category);
+   // console.log('CategoryFilter (IMPURE) transform called with:', category);
     if (!products || !category || category.trim() === '') {
       return products;
     }

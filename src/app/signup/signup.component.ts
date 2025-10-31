@@ -14,22 +14,30 @@ import { CommonModule } from '@angular/common';
 export class SignupComponent {
   user: User = { userId: 0, username: '', password: '', email: '', role: 'user' };
   message = '';
+  messageClass = '';
 
   constructor(private userAPIService: UserAPIService, private router: Router) {}
 
-  onSignup(): void {
-    this.user.userId = Math.floor(Math.random() * 10000) + 1;
-    console.log("signup object:",this.user);
-    console.log('About to call createUser method');
-    this.userAPIService.createUser(this.user).subscribe({
-      next: (response) => {
-        this.message = 'Signup successful! You can now login.';
-        setTimeout(() => this.router.navigate(['/login']), 2000);
-      },
-      error: (error) => {
-        this.message = 'Signup failed. Please try again.';
-        console.error('Signup error:', error);
-      }
-    });
+  onSignup(form: any): void {
+    if (form.valid) {
+      this.user.userId = Math.floor(Math.random() * 10000) + 1;
+      console.log("signup object:",this.user);
+      console.log('About to call createUser method');
+      this.userAPIService.createUser(this.user).subscribe({
+        next: (response) => {
+          this.message = 'Signup successful! You can now login.';
+          this.messageClass = 'success-message';
+          setTimeout(() => this.router.navigate(['/login']), 2000);
+        },
+        error: (error) => {
+          this.message = 'Signup failed. Please try again.';
+          this.messageClass = 'error-message';
+          console.error('Signup error:', error);
+        }
+      });
+    } else {
+      this.message = 'Please fill all required fields correctly.';
+      this.messageClass = 'error-message';
+    }
   }
 }
